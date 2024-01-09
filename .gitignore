@@ -2,4 +2,5 @@ dev/
 config.php
 .eslintrc.json
 .htaccess
-images/
+images/item/*
+images/drawers/*
