@@ -33,10 +33,10 @@ if ($data !== null) {
       }
     }
     if($existe == 0){
-      $sql = "INSERT INTO drawers_fav (fav_title, fav_link, fav_img, fav_price,fav_mla) VALUES('$titulo', '$link', '$imagen', $precio,'$mlaID')";
+      $sql = "INSERT INTO drawers_fav (fav_title, fav_link, fav_img, fav_price,fav_mla,fav_desc) VALUES('$titulo', '$link', '$imagen', $precio,'$mlaID','$titulo')";
     }else{
-      // $sql = "UPDATE drawers_fav SET fav_title = '$titulo',fav_link = '$link', fav_img = '$imagen', fav_price = $precio WHERE fav_mla = '$mlaID'";
-      $sql = "UPDATE drawers_fav SET fav_link = '$link', fav_img = '$imagen', fav_price = $precio WHERE fav_mla = '$mlaID'";
+      $sql = "UPDATE drawers_fav SET fav_desc = '$titulo',fav_link = '$link', fav_img = '$imagen', fav_price = $precio WHERE fav_mla = '$mlaID'";
+      // $sql = "UPDATE drawers_fav SET fav_link = '$link', fav_img = '$imagen', fav_price = $precio WHERE fav_mla = '$mlaID'";
     }
     $result = $conn->query($sql);
   }

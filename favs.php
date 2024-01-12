@@ -21,6 +21,7 @@ include("head.php");
           <thead class="small">
             <th></th>
             <th>Title</th>
+            <th>Description</th>
             <th>Price</th>
             <th>Action</th>
           </thead>
@@ -77,5 +78,5 @@ include("head.php");
 <?php include("footer.php"); ?>
 <script>
   priceBookmark()
-bookmarksTable()
+  bookmarksTable()
 </script>
