@@ -56,7 +56,7 @@ $drawerId = $_GET['did'];
                 <input id="item_owner" name="item_owner" type="hidden" value="<?= $usuarioId ?>">
                   <div class="form-floating">
                     <input type='text' class='form-control' id='item_name' name='item_name' value='item_name' placeholder='item_name' title='item_name'>
-                    <label class="text-indigo " for="item_name">Drawer Name</label>
+                    <label class="text-indigo " for="item_name">Item Name</label>
                   </div>
                 </section>
               </article>
