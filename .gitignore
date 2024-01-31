@@ -4,3 +4,4 @@ config.php
 .htaccess
 images/item/*
 images/drawers/*
+.vscode/settings.json
