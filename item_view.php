@@ -52,74 +52,53 @@ $drawerId = $_GET['did'];
             <form action="item_save.php" method="post" enctype="multipart/form-data">
               <article class="row mb-3">
                 <section class="col">
-                <input id="item_id_status" name="item_id_status" type="hidden" value="<?= $itemId?>">
-                <input id="item_owner" name="item_owner" type="hidden" value="<?= $usuarioId ?>">
-                  <div class="form-floating">
-                    <input type='text' class='form-control' id='item_name' name='item_name' value='' placeholder='item_name' title='Name'>
-                    <label class="text-indigo " for="item_name">Item Name</label>
-                  </div>
+                  <input id="item_id_status" name="item_id_status" type="hidden" value="<?= $itemId?>">
+                  <input id="item_owner" name="item_owner" type="hidden" value="<?= $usuarioId ?>">
+                  <label class="text-indigo mb-2" for="item_name">Item Name</label>
+                  <input type='text' class='form-control' id='item_name' name='item_name' value='' placeholder='item_name' title='Name'>
+                </section>
+                <section class="col-2">
+                  <label class="text-indigo mb-2" for="item_amount">Amount</label>
+                  <input type='number' class='form-control text-end' id='item_amount' name='item_amount' value='0' placeholder='item_amount' title='Amount'>
+                </section>
+                <section class="col-2">
+                  <label class="text-indigo mb-2" for="item_price">Price U$S</label>
+                  <input type='number' class='form-control text-end' id='item_price' name='item_price' value='item_price' placeholder='item_price' title='Price' min="0" value="0" step="0.01">
                 </section>
               </article>
               <article class="row mb-3">
                 <section class="col">
-                  <section class="input-group mb-3">
-                    <div class="form-floating">
+                  <label class="text-indigo mb-2" for="item_brand">Brand</label>
+                  <section class="input-group">
                     <select name='item_brand' id='item_brand' class='form-control' title='Brand'>
                     </select>
-                    <label class="text-indigo " for="item_brand">Brand</label>
-
-                    </div>
                     <span class="input-group-text bg-night rounded-end-2" title="Add Brand">
-                      <a href="#" class="btn btn-night btn-sm" data-bs-toggle="modal" data-bs-target="#addItemToList">
-                        <i class="fa-regular fa-plus-circle"></i>
-                      </a>
+                      <a href="#" class="btn btn-night btn-sm" data-bs-toggle="modal" data-bs-target="#addItemToList"><i class="fa-regular fa-plus-circle"></i></a>
                     </span>
                   </section>
                 </section>
                 <section class="col">
-                <div class="form-floating">
-                    <input type='text' class='form-control' id='item_model' name='item_model' value='' placeholder='Model' title='Model'>
-                    <label class="text-indigo " for="item_model">Model</label>
-                  </div>
-                </section>
-              </article>
-              <article class="row mb-3">
-                <section class="col">
-                  <div class="form-floating">
-                    <input type='number' class='form-control' id='item_amount' name='item_amount' value='0' placeholder='item_amount' title='Amount'>
-                    <label class="text-indigo " for="item_amount">Amount</label>
-                  </div>
-                </section>
-                <section class="col">
-                  <div class="form-floating">
-                    <input type='number' class='form-control' id='item_price' name='item_price' value='item_price' placeholder='item_price' title='Price' min="0" value="0" step="0.01">
-                    <label class="text-indigo" for="item_price">Price U$S</label>
-                  </div>
-                </section>
-              </article>
-              <article class="row mb-3">
-                <section class="col">
-                <div class="form-floating">
-                    <textarea id='item_descriptinon' class='form-control' name='item_descriptinon' rows='5' cols='10' placeholder='Description' title='Description'>Description</textarea>
-                    <label class="text-indigo " for="item_descriptinon">Description</label>
-                  </div>
+                  <label class="text-indigo mb-2" for="item_model">Model</label>
+                  <input type='text' class='form-control' id='item_model' name='item_model' value='' placeholder='Model' title='Model'>
                 </section>
               </article>
 
               <article class="row mb-3">
-                <section class="col">
-                <div class="form-floating">
+                <section class="col-12">
+                  <label class="text-indigo mb-2" for="item_descriptinon">Description</label>
+                  <textarea id='item_descriptinon' class='form-control' name='item_descriptinon' rows='2' placeholder='Description' title='Description'>Description</textarea>
+                </section>
+              </article>
+              <article class="row mb-3">
+                <section class="col-6">
+                  <label class="text-indigo mb-2" for="item_category">Category</label>
                   <select name='item_category' id='item_category' class='form-control' title='Category'>
                   </select>
-                  <label class="text-indigo " for="item_category">Category</label>
-                </div>
                 </section>
-                <section class="col">
-                <div class="form-floating">
-                  <select name='item_drawer' id='item_drawer' class='form-control' title='Actual Drawer'>
+                <section class="col-6">
+                  <label class="text-indigo mb-2" for="item_drawer">Actual Drawer > Move to</label>
+                  <select name='item_drawer' id='item_drawer' class='form-control  mb-3' title='Actual Drawer'>
                   </select>
-                  <label class="text-indigo " for="item_drawer">Actual Drawer > Move to</label>
-                </div>
                 </section>
               </article>
               <article class="row mb-3">
@@ -192,4 +171,16 @@ $drawerId = $_GET['did'];
   // drawerListSelect('item_drawer',<?= $usuarioId ?>)
   itemView(<?= $itemId?>,<?= $usuarioId ?>)
   // fillSelectBrand('item_brand')
+  $(document).ready(function() {
+    $('#item_brand').select2({theme: 'bootstrap-5'})
+    $('#item_drawer').select2({theme: 'bootstrap-5' })
+    $('#item_category').select2({theme: 'bootstrap-5'})
+    // $('#empleadoBaja').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevaSolicitudBajaModal') })
+    // $('#empleadoAusencia').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevaAusenciaModal') })
+    // $('#obraAusencia').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevaAusenciaModal') })
+    // $('#empleadoAdicional').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevoAdicionalesModal') })
+    // $('#obraAdicional').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevoAdicionalesModal') })
+    // $('#empleadoFichada').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevaFichadaModal') })
+    // $('#obraFichada').select2({theme: 'bootstrap-5',dropdownParent: $('#nuevaFichadaModal') })
+  })
 </script>

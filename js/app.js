@@ -241,6 +241,15 @@ async function drawerItems($drawerId, usuarioId) {
       { 'data': 'item_id' , className: 'text-center'},//8
     ],
     columnDefs: [
+      // { 'width': '5%', 'targets': 0 },
+      // { 'width': '5%', 'targets': 1 },
+      // { 'width': '13%', 'targets': 2 },
+      // { 'width': '13%', 'targets': 3 },
+      // { 'width': '13%', 'targets': 4 },
+      // { 'width': '13%', 'targets': 5 },
+      // { 'width': '13%', 'targets': 6 },
+      // { 'width': '13%', 'targets': 7 },
+      // { 'width': '5%', 'targets': 8 },
       {
         'targets': 0,
         'data': 'download_link',
@@ -347,6 +356,9 @@ async function itemView(itemId,usuarioId) {
       const selectedTag = brand.brand_id== item[0].item_brand ? ' selected':''
       item_brand.innerHTML += `<option class='text-muted' value="${brand.brand_id}" ${selectedTag}>${brand.brand_name}</option>`
     }
+    // $('#item_brand').select2({theme: 'bootstrap-5'})
+    // $('#item_drawer').select2({theme: 'bootstrap-5' })
+    // $('#item_category').select2({theme: 'bootstrap-5'})
 
   }else{
     // window.location.href ='index.php'
@@ -415,6 +427,16 @@ async function itemsAll(usuarioId,categoriaId) {
       { 'data': 'item_id' , className: 'text-center'},//9
     ],
     columnDefs: [
+      { 'width': '5%', 'targets': 0 },
+      { 'width': '10%', 'targets': 1 },
+      { 'width': '7%', 'targets': 2 },
+      { 'width': '7%', 'targets': 3 },
+      { 'width': '7%', 'targets': 4 },
+      { 'width': '5%', 'targets': 5 },
+      // { 'width': '13%', 'targets': 6 },
+      { 'width': '5%', 'targets': 7 },
+      { 'width': '5%', 'targets': 8 },
+      { 'width': '3%', 'targets': 9 },
       {
         'targets': 0,
         'data': 'download_link',
@@ -429,7 +451,7 @@ async function itemsAll(usuarioId,categoriaId) {
         'targets': 1,
         'data': 'download_link',
         'render': function ( data, type, row) {
-          const respuesta =  `<a href="item_view.php?id=${row['item_id']}&did=${row['item_drawer']}" class="text-${row['category_color']}">${row['item_name']}</a>`
+          const respuesta =  `<div class="d-grid gap-2"><a href="item_view.php?id=${row['item_id']}&did=${row['item_drawer']}" class="text-${row['category_color']}">${row['item_name']}</a></div>`
           return respuesta
         }
       },
@@ -453,7 +475,7 @@ async function itemsAll(usuarioId,categoriaId) {
         'targets': 9,
         'data': 'download_link',
         'render': function ( data, type, row) {
-          const respuesta = `<a href="item_del.php?id=${row['item_id']}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a>`
+          const respuesta = `<div class="d-grid gap-2"><a href="item_del.php?id=${row['item_id']}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a></div>`
           return respuesta
         }
       }

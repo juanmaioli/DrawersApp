@@ -77,14 +77,17 @@ $conn->close();
   <!-- Custom styles for this template -->
   <link rel="stylesheet" href="css/style.css?version=1.1">
   <!-- DataTables CSS -->
-  <link rel="stylesheet" type="text/css" href="dataTables/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/responsive.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/buttons.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/searchPanes.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/select.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/select.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/rowReorder.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="dataTables/rowGroup.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/responsive.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/buttons.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/searchPanes.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/select.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/select.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/rowReorder.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="js/dataTables/rowGroup.bootstrap5.min.css">
+  <!-- Select2 Css -->
+  <link rel="stylesheet" href="js/select2/select2.min.css">
+  <link rel="stylesheet" href="js/select2/select2-bootstrap-5-theme.min.css">
   <!-- Favicon for this template -->
   <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
