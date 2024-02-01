@@ -323,7 +323,8 @@ async function itemView(itemId,usuarioId) {
     item_image.src = `images/item/${item[0].item_image}`
     item_image_full_src.src = `images/item/${item[0].item_image}`
     searchImage.href = `https://www.google.com/search?q=${item[0].item_descrption}&source=lnms&tbm=isch`
-    searchML.href = `https://listado.mercadolibre.com.ar/${item[0].item_descrption}#D[A:${item[0].item_descrption}]`
+    searchML.href = `https://listado.mercadolibre.com.ar/${item[0].item_descrption}_OrderId_PRICE_NoIndex_True`
+    // searchML.href = `https://listado.mercadolibre.com.ar/${item[0].item_descrption}#D[A:${item[0].item_descrption}]`
     item_category.innerHTML = ''
     item_drawer.innerHTML = ''
     const rtaCategories = await fetch(url_category)
