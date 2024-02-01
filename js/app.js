@@ -209,7 +209,7 @@ async function categoryList(selecDest) {
 
 async function drawerItems($drawerId, usuarioId) {
   const url = `./api/itemlist-${$drawerId}-${usuarioId}`
-  
+
   const table = $('#drawer_item_table').DataTable( {
     destroy: true,
     // language: {'url': '/dataTables/Spanish.json'},
@@ -300,6 +300,8 @@ async function itemView(itemId,usuarioId) {
   const item_name = $('#item_name')
   const item_price = $('#item_price')
   const item_title = $('#item_title')
+  const item_brand = $('#item_brand')
+  const item_model = $('#item_model')
   const searchImage = $('#searchImage')
   const searchML = $('#searchML')
   const url = `./api/itemview-${itemId}`
@@ -314,6 +316,7 @@ async function itemView(itemId,usuarioId) {
     item_name.value = item[0].item_name
     item_price.value = item[0].item_price
     item_amount.value = item[0].item_amount
+    item_model.value = item[0].item_model
     item_descriptinon.value = item[0].item_descrption
     item_card.classList.add(`shadow-${item[0].category_color}-blur`)
     item_image.classList.add(`border-${item[0].category_color}`)
@@ -335,6 +338,15 @@ async function itemView(itemId,usuarioId) {
       const selectedTag = drawer.drawer_id == item[0].item_drawer ? ' selected':''
       item_drawer.innerHTML += `<option class='text-${drawer.category_color}' value="${drawer.drawer_id}" ${selectedTag}>${drawer.drawer_name}</option>`
     }
+
+    const urlBrands = `./api/brandlist-0`
+    const rtaBrands = await fetch(urlBrands)
+    const listBrands = await rtaBrands.json()
+    for(const brand of listBrands ){
+      const selectedTag = brand.brand_id== item[0].item_brand ? ' selected':''
+      item_brand.innerHTML += `<option class='text-muted' value="${brand.brand_id}" ${selectedTag}>${brand.brand_name}</option>`
+    }
+
   }else{
     // window.location.href ='index.php'
   }
@@ -358,7 +370,8 @@ async function drawerListSelect(selecDest,usuarioId) {
 }
 async function itemsAll(usuarioId,categoriaId) {
   const url = `./api/itemsall-${usuarioId}-${categoriaId}`
-  
+  console.log('url: ', url)
+
   const table = $('#item_all_table').DataTable( {
     destroy: true,
     // language: {'url': '/dataTables/Spanish.json'},
@@ -379,15 +392,26 @@ async function itemsAll(usuarioId,categoriaId) {
       {extend:'print',className: 'btn btn-indigo',text:'<i class="fa-regular fa-print"></i> Print'}
     ],
     columns: [
+      // <th></th> 0
       { 'data': 'item_image' , className: 'text-center'},//0
+      // <th>Name</th> 1
       { 'data': 'item_name' },//1
-      { 'data': 'category_name' },//2
-      { 'data': 'drawer_name' },//3
-      { 'data': 'item_descrption' },//4
-      { 'data': 'item_amount' , className: 'text-center'},//5
-      { 'data': 'item_price' , className: 'text-center'},//6
-      { 'data': 'item_id' , className: 'text-center'},//7
-      { 'data': 'item_id' , className: 'text-center'},//8
+      // <th>Brand</th> 2
+      { 'data': 'brand_name' , className: 'text-center'},//2
+      // <th>Model</th> 3
+      { 'data': 'item_model' , className: 'text-center'},//3
+      // <th>Category</th> 4
+      { 'data': 'category_name' },//4
+      // <th>Drawer</th> 5
+      { 'data': 'drawer_name' },//5
+      // <th>Description</th> 6
+      { 'data': 'item_descrption' },//6
+      // <th>Amount</th> 7
+      { 'data': 'item_amount' , className: 'text-center'},//7
+      // <th>Price U$S</th> 8
+      { 'data': 'item_price' , className: 'text-center'},//8
+      // <th>Delete</th> 9
+      { 'data': 'item_id' , className: 'text-center'},//9
     ],
     columnDefs: [
       {
@@ -409,7 +433,7 @@ async function itemsAll(usuarioId,categoriaId) {
         }
       },
       {
-        'targets': 2,
+        'targets': 4,
         'data': 'download_link',
         'render': function ( data, type, row) {
           const respuesta =  `<span class="badge rounded-pill bg-${row['category_color']}">${row['category_name']}</span>`
@@ -417,7 +441,7 @@ async function itemsAll(usuarioId,categoriaId) {
         }
       },
       {
-        'targets': 3,
+        'targets': 5,
         'data': 'download_link',
         'render': function ( data, type, row) {
           const respuesta =  `<a href="drawer_view.php?id=${row['item_drawer']}" class="text-${row['category_color']}">${row['drawer_name']}</a>`
@@ -425,15 +449,7 @@ async function itemsAll(usuarioId,categoriaId) {
         }
       },
       {
-        'targets': 7,
-        'data': 'download_link',
-        'render': function ( data, type, row) {
-          const respuesta = `<a href="item_view.php?id=${row['item_id']}&did=${row['item_drawer']}" class="btn btn-outline-success"><i class="fa-regular fa-eye"></i></a>`
-          return respuesta
-        }
-      },
-      {
-        'targets': 8,
+        'targets': 9,
         'data': 'download_link',
         'render': function ( data, type, row) {
           const respuesta = `<a href="item_del.php?id=${row['item_id']}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a>`
@@ -795,4 +811,27 @@ async function viewBookmark(bookmarkID,title) {
   bookmarkIDHidden.value =  bookmarkID
   bookmark_modal_full_Label.innerHTML = title
   bookmarkTitle.value = title
+}
+
+async function addItemAList(){
+  const $ = selector => document.querySelector(selector)
+  const newItemName = $('#newItemName').value
+  const item_brand = $('#item_brand')
+  const urlAddItem = `./brand_save.php`
+
+  const responseNewItem = await fetch(urlAddItem, {
+    method: 'POST',
+    body: JSON.stringify({newItem:newItemName})
+  })
+  const newItemID =  await responseNewItem.json()
+  console.log('newItemID: ', newItemID)
+  item_brand.innerHTML = ''
+  const urlBrands = `./api/brandlist-0`
+  const rtaBrands = await fetch(urlBrands)
+  const listBrands = await rtaBrands.json()
+  for(const brand of listBrands ){
+    const selectedTag = brand.brand_id== newItemID[0].newItemID ? ' selected':''
+    item_brand.innerHTML += `<option class='text-muted' value="${brand.brand_id}" ${selectedTag}>${brand.brand_name}</option>`
+  }
+
 }

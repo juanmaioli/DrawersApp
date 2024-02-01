@@ -14,6 +14,9 @@ $item_amount = $_POST["item_amount"];
 $item_descriptinon = $_POST["item_descriptinon"];
 $item_category = $_POST["item_category"];
 $item_drawer = $_POST["item_drawer"];
+$item_brand = $_POST["item_brand"];
+$item_model = $_POST["item_model"];
+$item_drawer = $_POST["item_drawer"];
 
 if(empty($_POST['item_price'])){
   $item_price = 0;
@@ -39,7 +42,7 @@ $item_descriptinon  = ucwords(strtolower($item_descriptinon));
 // echo "item_category: " . $item_category . '<br>';
 // echo "item_drawer: " . $item_drawer . '<br>';
 
-$sql_Update = "UPDATE drawers_items SET item_name='$item_name', item_amount = '$item_amount', item_descrption = '$item_descriptinon',item_category = '$item_category', item_drawer = '$item_drawer',item_price = $item_price WHERE item_id = " . $item_id_status;
+$sql_Update = "UPDATE drawers_items SET item_name='$item_name', item_amount = '$item_amount', item_descrption = '$item_descriptinon',item_category = '$item_category', item_drawer = '$item_drawer',item_price = $item_price, item_brand=$item_brand, item_model='$item_model' WHERE item_id = " . $item_id_status;
 // echo $sql_Update;
 $sql_Add = "INSERT INTO drawers_items (item_name, item_amount, item_descrption,item_category,item_owner,item_drawer)
 VALUES('$item_name', '$item_amount', '$item_descriptinon',$item_category,$item_owner,$item_drawer)";

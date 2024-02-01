@@ -28,12 +28,13 @@ if(empty($_GET['id']))
             <thead class="small">
               <th></th>
               <th>Name</th>
+              <th>Brand</th>
+              <th>Model</th>
               <th>Category</th>
               <th>Drawer</th>
               <th>Description</th>
               <th>Amount</th>
               <th>Price U$S</th>
-              <th>View</th>
               <th>Delete</th>
             </thead>
             <tbody class="small">

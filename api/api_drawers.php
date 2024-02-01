@@ -94,6 +94,8 @@ $tarea = $parametro[0];
         drawers_items.item_image,
         drawers_items.item_owner,
         drawers_items.item_category,
+        drawers_items.item_brand,
+        drawers_items.item_model,
         drawers_category.category_name,
         drawers_category.category_color,
         drawers_drawer.drawer_name
@@ -154,14 +156,18 @@ $tarea = $parametro[0];
         drawers_items.item_amount,
         drawers_items.item_price,
         drawers_items.item_descrption,
+        drawers_items.item_brand,
+        drawers_items.item_model,
         drawers_items.item_category,
         drawers_items.item_owner,
         drawers_items.item_update,
         drawers_items.item_date,
-        drawers_drawer.drawer_name
+        drawers_drawer.drawer_name,
+        drawers_brand.brand_name
       FROM drawers_items
       INNER JOIN drawers_category ON drawers_items.item_category = drawers_category.category_id
       INNER JOIN drawers_drawer ON drawers_items.item_drawer = drawers_drawer.drawer_id
+      INNER JOIN drawers_brand ON drawers_items.item_brand = drawers_brand.brand_id
       $whereClause
       ORDER BY item_name ASC";
         break;
@@ -185,6 +191,15 @@ $tarea = $parametro[0];
         break;
       case 'clearBookmark':
         $sql = "TRUNCATE TABLE  drawers_fav";
+        break;
+      case 'brandlist':
+        $sql = "SELECT * FROM drawers_brand ORDER BY brand_name";
+        break;
+      case 'brandlistAdd':
+        // $newItem =  ucwords($parametro[1]);
+        // $sql = "INSERT INTO drawers_brand (brand_name) VALUES('$newItem')";
+        // $result = $conn->query($sql);
+        // $sql = "SELECT max(brand_id) as newItemID FROM drawers_brand";
         break;
       default:$sql  = "";
   }

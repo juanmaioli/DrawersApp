@@ -55,21 +55,44 @@ $drawerId = $_GET['did'];
                 <input id="item_id_status" name="item_id_status" type="hidden" value="<?= $itemId?>">
                 <input id="item_owner" name="item_owner" type="hidden" value="<?= $usuarioId ?>">
                   <div class="form-floating">
-                    <input type='text' class='form-control' id='item_name' name='item_name' value='item_name' placeholder='item_name' title='item_name'>
+                    <input type='text' class='form-control' id='item_name' name='item_name' value='' placeholder='item_name' title='Name'>
                     <label class="text-indigo " for="item_name">Item Name</label>
                   </div>
                 </section>
               </article>
               <article class="row mb-3">
                 <section class="col">
+                  <section class="input-group mb-3">
+                    <div class="form-floating">
+                    <select name='item_brand' id='item_brand' class='form-control' title='Brand'>
+                    </select>
+                    <label class="text-indigo " for="item_brand">Brand</label>
+
+                    </div>
+                    <span class="input-group-text bg-night rounded-end-2" title="Add Brand">
+                      <a href="#" class="btn btn-night btn-sm" data-bs-toggle="modal" data-bs-target="#addItemToList">
+                        <i class="fa-regular fa-plus-circle"></i>
+                      </a>
+                    </span>
+                  </section>
+                </section>
+                <section class="col">
+                <div class="form-floating">
+                    <input type='text' class='form-control' id='item_model' name='item_model' value='' placeholder='Model' title='Model'>
+                    <label class="text-indigo " for="item_model">Model</label>
+                  </div>
+                </section>
+              </article>
+              <article class="row mb-3">
+                <section class="col">
                   <div class="form-floating">
-                    <input type='number' class='form-control' id='item_amount' name='item_amount' value='item_amount' placeholder='item_amount' title='item_amount'>
+                    <input type='number' class='form-control' id='item_amount' name='item_amount' value='0' placeholder='item_amount' title='Amount'>
                     <label class="text-indigo " for="item_amount">Amount</label>
                   </div>
                 </section>
                 <section class="col">
                   <div class="form-floating">
-                    <input type='number' class='form-control' id='item_price' name='item_price' value='item_price' placeholder='item_price' title='item_price' min="0" value="item_price" step="0.01">
+                    <input type='number' class='form-control' id='item_price' name='item_price' value='item_price' placeholder='item_price' title='Price' min="0" value="0" step="0.01">
                     <label class="text-indigo" for="item_price">Price U$S</label>
                   </div>
                 </section>
@@ -77,24 +100,23 @@ $drawerId = $_GET['did'];
               <article class="row mb-3">
                 <section class="col">
                 <div class="form-floating">
-                    <textarea id='item_descriptinon' class='form-control' name='item_descriptinon' rows='5' cols='10' placeholder='item_descriptinon' title='item_descriptinon'>item_descriptinon</textarea>
+                    <textarea id='item_descriptinon' class='form-control' name='item_descriptinon' rows='5' cols='10' placeholder='Description' title='Description'>Description</textarea>
                     <label class="text-indigo " for="item_descriptinon">Description</label>
                   </div>
                 </section>
               </article>
+
               <article class="row mb-3">
                 <section class="col">
                 <div class="form-floating">
-                  <select name='item_category' id='item_category' class='form-control'>
+                  <select name='item_category' id='item_category' class='form-control' title='Category'>
                   </select>
                   <label class="text-indigo " for="item_category">Category</label>
                 </div>
                 </section>
-              </article>
-              <article class="row mb-3">
                 <section class="col">
                 <div class="form-floating">
-                  <select name='item_drawer' id='item_drawer' class='form-control'>
+                  <select name='item_drawer' id='item_drawer' class='form-control' title='Actual Drawer'>
                   </select>
                   <label class="text-indigo " for="item_drawer">Actual Drawer > Move to</label>
                 </div>
@@ -132,10 +154,42 @@ $drawerId = $_GET['did'];
     </div>
   </div>
 </div>
+<!-- End Modal Full Image-->
+  <!-- INICIO  Modal AddItemALista -->
+  <div class="modal fade" id="addItemToList">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header alert-indigo">
+          <h5 class="modal-title" id="addItemToListTitle">Add New Item to Brand List</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <article class="row">
+            <section class="col">
+              <div class="form-group">
+                <label for="newItemName" id="labelNewItem">New Item</label>
+                <input type="text" class="form-control" id="newItemName" name="newItemName" value="" required >
+              </div>
+            </section>
+          </article>
+        </div>
+        <div class="modal-footer">
+          <button id="addItemToListModalCerrar" class="btn btn-outline-secondary" data-bs-dismiss="modal" title="Close Window">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+          <button  id="addItemToListModalGuardar" class="btn btn-outline-success" title="Save" onclick="addItemAList()" data-bs-dismiss="modal">
+            <i class="fa-regular fa-floppy-disk"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN  Modal AddItemALista -->
 
 <?php include("footer.php"); ?>
 <script>
   // categoryList('item_category')
   // drawerListSelect('item_drawer',<?= $usuarioId ?>)
   itemView(<?= $itemId?>,<?= $usuarioId ?>)
+  // fillSelectBrand('item_brand')
 </script>
