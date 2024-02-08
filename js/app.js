@@ -673,6 +673,7 @@ async function bookmarksTable(){
       },
     ]
   })
+  priceBookmark()
 }
 
 async function categoryView(categoryId) {
