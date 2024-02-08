@@ -187,7 +187,7 @@ $tarea = $parametro[0];
         $sql = "SELECT * FROM drawers_fav WHERE fav_delete = 0 ORDER BY fav_title";
         break;
       case 'deleteBookmark':
-        $sql = "UPDATE drawers_fav fav_delete = 1 SET WHERE fav_mla =  '$parametro[1]'";
+        $sql = "UPDATE drawers_fav SET fav_delete = 1 WHERE fav_mla =  '$parametro[1]'";
         $result = $conn->query($sql);
         $sql = "";
         break;
