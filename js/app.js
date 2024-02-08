@@ -581,7 +581,7 @@ async function bookmarksTable(){
     orderCellsTop: true,
     buttons: [
       {extend:'copy',className: 'btn btn-darkblue',text:'<i class="fa-regular fa-copy"></i> Copy' },
-      {extend: 'excel',className: 'btn btn-green',text:'<i class="fa-regular fa-file-excel"></i> Excel'},
+      {extend:'excel',className: 'btn btn-green',text:'<i class="fa-regular fa-file-excel"></i> Excel'},
       {extend:'pdf',className: 'btn btn-danger',text:'<i class="fa-regular fa-file-pdf"></i> Pdf',orientation: 'landscape',pageSize: 'A4'},
       {extend:'print',className: 'btn btn-indigo',text:'<i class="fa-regular fa-print"></i> Print'}
     ],
@@ -636,11 +636,14 @@ async function bookmarksTable(){
         'data': 'download_link',
         'render': function ( data, type, row) {
           const fav_title = row['fav_title']
+          const fav_delete = row['fav_delete']
           const fav_link = row['fav_link']
           const fav_mla = row['fav_mla']
           const linkML = `https://listado.mercadolibre.com.ar/${fav_title}_OrderId_PRICE_NoIndex_True`
-          const respuesta =  `<a href="${fav_link}" class="btn btn-outline-indigo" target="_blank"><i class="fa-regular fa-arrow-up-right-from-square"></i></a>
+          const respuesta =  fav_delete == 0 ? `<a href="${fav_link}" class="btn btn-outline-indigo" target="_blank"><i class="fa-regular fa-arrow-up-right-from-square"></i></a>
           <a href="javascript:void(0)" class="btn btn-outline-danger" onclick="deleteBookmark('${fav_mla}')"><i class="fa-regular fa-trash"></i></a>
+          <a href="${linkML}" class="btn btn-outline-primary" target="_blank"><i class="fa-regular fa-magnifying-glass"></i></a>`:`<a href="${fav_link}" class="btn btn-outline-indigo" target="_blank"><i class="fa-regular fa-arrow-up-right-from-square"></i></a>
+
           <a href="${linkML}" class="btn btn-outline-primary" target="_blank"><i class="fa-regular fa-magnifying-glass"></i></a>`
           return respuesta
         }
