@@ -616,10 +616,21 @@ async function bookmarksTable(){
         'data': 'download_link',
         'render': function ( data, type, row) {
           const fav_title = row['fav_title']
-          const fav_link = row['fav_link']
+          const fav_delete = row['fav_delete']
+          const color = fav_delete = 1 ? ' text-danger':''
           const fav_mla = row['fav_mla']
-          // const respuesta =  `<a href="${fav_link}" class="text-decoration-none" target="_blank">${fav_title}</a>`
-          const respuesta =  `<a href="#bookmark_modal_full" class="text-decoration-none" data-bs-toggle="modal" onclick="viewBookmark('${fav_mla}','${fav_title}')">${fav_title}</a>`
+          const respuesta =  `<a href="#bookmark_modal_full" class="text-decoration-none ${color}" data-bs-toggle="modal" onclick="viewBookmark('${fav_mla}','${fav_title}')">${fav_title}</a>`
+          return respuesta
+        }
+      },
+      {
+        'targets': 2,
+        'data': 'download_link',
+        'render': function ( data, type, row) {
+          const fav_desc = row['fav_desc']
+          const fav_delete = row['fav_delete']
+          const color = fav_delete = 1 ? ' text-danger':' text-muted'
+          const respuesta =  `<span class="fst-italic ${color}" >${fav_desc}</span>`
           return respuesta
         }
       },
@@ -627,8 +638,10 @@ async function bookmarksTable(){
         'targets': 3,
         'data': 'download_link',
         'render': function ( data, type, row) {
+          const fav_delete = row['fav_delete']
+          const color = fav_delete = 1 ? ' text-danger':''
           const fav_price = row['fav_price']
-          return `$ ${fav_price}`
+          return `<span class="">$ ${fav_price}</span>`
         }
       },
       {
