@@ -184,10 +184,12 @@ $tarea = $parametro[0];
         $sql = "SELECT drawers_category.category_name as Categoria, drawers_category.category_id AS ID,sum(item_amount) AS Total FROM drawers_items INNER JOIN drawers_category ON drawers_items.item_category = drawers_category.category_id GROUP BY item_category order by total desc limit $parametro[1]";
         break;
       case 'bookmarks':
-        $sql = "SELECT * FROM drawers_fav ORDER BY fav_title";
+        $sql = "SELECT * FROM drawers_fav WHERE fav_delete = 0 ORDER BY fav_title";
         break;
       case 'deleteBookmark':
-        $sql = "DELETE FROM drawers_fav WHERE fav_mla =  '$parametro[1]'";
+        $sql = "UPDATE drawers_fav fav_delete = 1 SET WHERE fav_mla =  '$parametro[1]'";
+        $result = $conn->query($sql);
+        $sql = "";
         break;
       case 'clearBookmark':
         $sql = "TRUNCATE TABLE  drawers_fav";
