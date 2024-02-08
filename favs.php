@@ -12,8 +12,12 @@ include("head.php");
             <section class="col-md-5 text-start">
               <h3 class="text-indigo" id="totalPriceBookmark">Mercado Libre Bookmarks</h3>
             </section>
-            <section class="col-md-4 text-end"></section>
-            <section class="col-md-3 text-end"><a href="favs_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;New List of Bookmarks</a> <a href="javascript:void(0)" class="btn btn-danger ms-1" onclick="clearBookmark()"><i class="fa-regular fa-broom-wide"></i> Clear</a></section>
+            <section class="col-md-4 text-end">
+              <input class="form-check-input text-purple" type="checkbox" value="" id="checkDeleted" onchange="bookmarksTable()" checked>
+              <label class="form-check-label text-purple" for="checkDeleted">Hide Deleted Items</label>
+            </section>
+            <section class="col-md-3 text-end"><a href="favs_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;New List of Bookmarks</a></section>
+            <!-- <section class="col-md-3 text-end"><a href="favs_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;New List of Bookmarks</a> <a href="javascript:void(0)" class="btn btn-danger ms-1" onclick="clearBookmark()"><i class="fa-regular fa-broom-wide"></i> Clear</a></section> -->
           </article>
         </section>
         <section class="card-body" id="bookmarksList">

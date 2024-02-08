@@ -565,7 +565,8 @@ async function categoriesTable() {
   })
 }
 async function bookmarksTable(){
-  const url = `./api/bookmarks-0`
+  const checkDeleted = document.getElementById('checkDeleted').checked
+  const url = checkDeleted ? `./api/bookmarks-0`: `./api/bookmarksdel-0`
   const table = $('#bookmarksListTable').DataTable( {
     destroy: true,
     ajax: {'url': url,'dataSrc': ''},
