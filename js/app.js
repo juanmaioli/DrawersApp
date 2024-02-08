@@ -641,7 +641,17 @@ async function bookmarksTable(){
           const fav_delete = row['fav_delete']
           const color = fav_delete == 1 ? ' text-danger':''
           const fav_price = row['fav_price']
-          return `<span class="">$ ${fav_price}</span>`
+          return `<span class="${color}">$ ${fav_price}</span>`
+        }
+      },
+      {
+        'targets': 4,
+        'data': 'download_link',
+        'render': function ( data, type, row) {
+          const fav_delete = row['fav_delete']
+          const color = fav_delete == 1 ? ' text-danger':''
+          const fav_date = row['fav_date']
+          return `<span class="${color}">$ ${fav_price}</span>`
         }
       },
       {
