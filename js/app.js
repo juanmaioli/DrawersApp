@@ -593,8 +593,10 @@ async function bookmarksTable(){
       { 'data': 'fav_desc' },//2
       // <th>Price</th>
       { 'data': 'fav_price' , className: 'text-end'},//3
+      // <th>Update</th>
+      { 'data': 'fav_date' , className: 'text-center'},//4
       // <th>Action</th>
-      { 'data': 'fav_link' , className: 'text-center'},//4
+      { 'data': 'fav_link' , className: 'text-center'},//5
     ],
     columnDefs: [
       {
@@ -629,7 +631,7 @@ async function bookmarksTable(){
         }
       },
       {
-        'targets': 4,
+        'targets': 5,
         'data': 'download_link',
         'render': function ( data, type, row) {
           const fav_title = row['fav_title']

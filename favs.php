@@ -23,6 +23,7 @@ include("head.php");
             <th>Title</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Update</th>
             <th>Action</th>
           </thead>
           <tbody class="small">
