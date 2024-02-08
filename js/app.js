@@ -651,7 +651,7 @@ async function bookmarksTable(){
           const fav_delete = row['fav_delete']
           const color = fav_delete == 1 ? ' text-danger':''
           const fav_date = row['fav_date']
-          return `<span class="${color}">$ ${fav_price}</span>`
+          return `<span class="${color}">$ ${fav_date}</span>`
         }
       },
       {
