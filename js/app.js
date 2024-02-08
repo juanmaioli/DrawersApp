@@ -666,7 +666,7 @@ async function bookmarksTable(){
           const respuesta =  fav_delete == 0 ? `<a href="${fav_link}" class="btn btn-outline-indigo" target="_blank"><i class="fa-regular fa-arrow-up-right-from-square"></i></a>
           <a href="javascript:void(0)" class="btn btn-outline-danger" onclick="deleteBookmark('${fav_mla}')"><i class="fa-regular fa-trash"></i></a>
           <a href="${linkML}" class="btn btn-outline-primary" target="_blank"><i class="fa-regular fa-magnifying-glass"></i></a>`:`<a href="${fav_link}" class="btn btn-outline-indigo" target="_blank"><i class="fa-regular fa-arrow-up-right-from-square"></i></a>
-
+          <a href="javascript:void(0)" class="btn btn-outline-success" onclick="restoreBookmark('${fav_mla}')"><i class="fa-regular fa-trash-can-arrow-up"></i></a>
           <a href="${linkML}" class="btn btn-outline-primary" target="_blank"><i class="fa-regular fa-magnifying-glass"></i></a>`
           return respuesta
         }
@@ -830,6 +830,11 @@ function mmToFractionInches(mm) {
 }
 async function deleteBookmark(article) {
   const url = `./api/deleteBookmark-${article}`
+  const response = await fetch(url)
+  bookmarksTable()
+}
+async function restoreBookmark(article) {
+  const url = `./api/restoreBookmark-${article}`
   const response = await fetch(url)
   bookmarksTable()
 }

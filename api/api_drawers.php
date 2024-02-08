@@ -194,6 +194,11 @@ $tarea = $parametro[0];
         $result = $conn->query($sql);
         $sql = "";
         break;
+      case 'restoreBookmark':
+        $sql = "UPDATE drawers_fav SET fav_delete = 0 WHERE fav_mla =  '$parametro[1]'";
+        $result = $conn->query($sql);
+        $sql = "";
+        break;
       case 'clearBookmark':
         $sql = "TRUNCATE TABLE  drawers_fav";
         break;
