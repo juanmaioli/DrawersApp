@@ -709,7 +709,7 @@ async function getStatistics(usuarioId,totalRecords) {
   const categoryPriceToJson = await responseCategoryPrice.json()
   let bodyTable = ''
   bodyTable = `<h5 class="text-white mb-3">Value By Category</h5><table class="bg-indigo text-white text-center" style="width:100%">
-  <thead class="small"><th class="text-center" style="width:80%">Category</th><th class="text-end" colspan="2">Price U$S</th></thead><tbody class="small">`
+  <thead class="small"><th class="text-start" style="width:80%">Category</th><th class="text-end" colspan="2">Price U$S</th></thead><tbody class="small">`
   for(const fila of categoryPriceToJson){
     bodyTable  +=`<tr class="border-bottom"><td class="text-start">
     <a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Categoria}</a>
