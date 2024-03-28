@@ -621,7 +621,7 @@ async function bookmarksTable(){
           const fav_delete = row['fav_delete']
           const color = fav_delete == 1 ? ' text-danger':''
           const fav_mla = row['fav_mla']
-          const respuesta =  `<a href="#bookmark_modal_full" class="text-decoration-none ${color}" data-bs-toggle="modal" onclick="viewBookmark('${fav_mla}','${fav_title}')">${fav_title} - ${fav_mla}</a>`
+          const respuesta =  `<a href="#bookmark_modal_full" class="text-decoration-none ${color}" data-bs-toggle="modal" onclick="viewBookmark('${fav_mla}','${fav_title}')">${fav_title}</a>`
           return respuesta
         }
       },
