@@ -40,7 +40,8 @@ async function process(){
 }
 
 async function procesaFavs() {
-  const favoritos = document.querySelectorAll('.ui-list__list-item')
+  // const favoritos = document.querySelectorAll('.ui-list__list-item')
+  const favoritos = document.querySelectorAll('.build-list__list-item')
   const listaUL = document.querySelector('ul')
   const newCode = document.querySelector('#newCode')
   let tablaFinal = '<table id="tablaFavoritos"><thead><tr><th>N°</th><th>Image</th><th>Item</th><th>Precio</th><th>Link</th></tr></thead><tbody>'
@@ -48,6 +49,7 @@ async function procesaFavs() {
   const listaJSON = []
 
   const arrayItems = Array.from(favoritos)
+  console.log('favoritos: ', favoritos.length)
   favoritos.forEach(function (listItem) {
     contador++
     const article = listItem.querySelector('.poly-action-links__action')
