@@ -724,7 +724,7 @@ async function getStatistics(usuarioId,totalRecords) {
   bodyTable = `<h5 class="text-white mb-3">Items By Category</h5>
   <table class="bg-indigo text-white text-center" style="width:100%">
   <thead class="small">
-  <th class="text-start>Category</th><th class="text-end">Total Items</th>
+  <th class="text-start">Category</th><th class="text-end">Total Items</th>
   </thead><tbody class="small">`
   for(const fila of categoryTotalToJson){
     bodyTable  +=`<tr class="border-bottom">
