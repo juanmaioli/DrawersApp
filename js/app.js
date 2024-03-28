@@ -608,9 +608,8 @@ async function bookmarksTable(){
         'render': function ( data, type, row) {
           let srcIMG = 'default.png'
           const fav_title = row['fav_title']
-          const fav_mla = row['fav_mla']
           if (row['fav_img'].length > 0){srcIMG = `${row['fav_img']}`}
-          const respuesta =  `<a href="#item_image_full" data-bs-toggle="modal" onclick="viewImg('${srcIMG}','${fav_title}')"><img class="border border-orange mb-3 rounded-circle" src="${srcIMG}" alt="" width="90px">${fav_mla}</a>`
+          const respuesta =  `<a href="#item_image_full" data-bs-toggle="modal" onclick="viewImg('${srcIMG}','${fav_title}')"><img class="border border-orange mb-3 rounded-circle" src="${srcIMG}" alt="" width="90px"></a>`
           return respuesta
         }
       },
