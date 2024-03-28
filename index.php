@@ -42,9 +42,9 @@ if(empty($_GET['id']))
                 <label class="form-check-label" id="switchTableCardLabel" for="switchTableCard">Change view to cards</label>
               </div>
             </section>
-            <section class="col-md-5 text-end"></section>
-            <section class="col-md-2 text-end"><a href="item_new.php?did=0" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Item</a></section>
-            <section class="col-md-2 text-end"><a href="drawer_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Drawer</a></section>
+            <section class="col-md-7 text-end"></section>
+            <section class="col-md-1 text-end"><a href="item_new.php?did=0" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Item</a></section>
+            <section class="col-md-1 text-end"><a href="drawer_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Drawer</a></section>
           </article>
         </section>
         <section class="card-body" id="drawersList">
