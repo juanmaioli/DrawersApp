@@ -10,7 +10,6 @@ $nombre = $_FILES['file-upload']['name'];
 $usr_id = $_POST['image_usr_id'];
 $nombrer = "images/usr/" . $usr_id . "-" . strtolower($nombre);
 
-
 $ruta = $nombrer ;// $_FILES['imagen']['name'];
 $resultado = @move_uploaded_file($_FILES["file-upload"]["tmp_name"], $ruta);
 
@@ -21,12 +20,12 @@ if (!empty($resultado)){
     mysqli_set_charset($conn,'utf8');
     $sql = "UPDATE " . $table_pre . "usr set usr_image = 'images/usr/" . $usr_id . "-" . strtolower($nombre) . "' WHERE usr_id=" . $usr_id;
 
-    $result = $conn->query($sql);   
+    $result = $conn->query($sql);
     $conn->close();
-    
+
     crop_image_square($nombrer);
     resize_image($nombrer,750,750);
-    add_logo_image($nombrer,$logo_arch , $nombrer);
+    // add_logo_image($nombrer,$logo_arch , $nombrer);
 }
 header('Location: index.php');
 ?>
