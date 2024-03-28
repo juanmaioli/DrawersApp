@@ -721,15 +721,15 @@ async function getStatistics(usuarioId,totalRecords) {
   const urlCategoryTotal  = `./api/categorytotal-${totalRecords}`
   const responseCategoryTotal = await fetch(urlCategoryTotal)
   const categoryTotalToJson = await responseCategoryTotal.json()
-  bodyTable = `<h5 class="text-white mb-3">Items By Category</h5><table class="bg-indigo text-white text-start" style="width:100%">
-  <thead class="small"><th class="text-start>Category</th><th class="text-end">Total Items</th></thead><tbody class="small">`
+  bodyTable = `<h5 class="text-white mb-3">Items By Category</h5>
+  <table class="bg-indigo text-white text-center" style="width:100%">
+  <thead class="small">
+  <th class="text-start>Category</th><th class="text-end">Total Items</th>
+  </thead><tbody class="small">`
   for(const fila of categoryTotalToJson){
     bodyTable  +=`<tr class="border-bottom">
-    <td class="text-start">
-    <a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Categoria}</a>
-    </td>
-    <td class="text-end">
-    <a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Total}</a></td></tr>`
+    <td class="text-start"><a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Categoria}</a></td>
+    <td class="text-end"><a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Total}</a></td></tr>`
   }
   statisticsCategoryTotal.innerHTML += `${bodyTable}</tbody></table>`
 }
