@@ -729,8 +729,7 @@ async function getStatistics(usuarioId,totalRecords) {
     <a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Categoria}</a>
     </td>
     <td class="text-end">
-    <a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Total}</a>
-    ${fila.Total}</td></tr>`
+    <a href='items.php?id=${fila.ID}' class="text-white text-decoration-none">${fila.Total}</a></td></tr>`
   }
   statisticsCategoryTotal.innerHTML += `${bodyTable}</tbody></table>`
 }
