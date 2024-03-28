@@ -27,6 +27,7 @@ include("head.php");
             <th>Title</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Ml Id</th>
             <th>Update</th>
             <th>Action</th>
           </thead>

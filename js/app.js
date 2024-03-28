@@ -594,10 +594,12 @@ async function bookmarksTable(){
       { 'data': 'fav_desc' },//2
       // <th>Price</th>
       { 'data': 'fav_price' , className: 'text-end'},//3
+      // <th>ML Id</th>
+      { 'data': 'fav_mla' , className: 'text-end'},//4
       // <th>Update</th>
-      { 'data': 'fav_date' , className: 'text-center'},//4
+      { 'data': 'fav_date' , className: 'text-center'},//5
       // <th>Action</th>
-      { 'data': 'fav_link' , className: 'text-center'},//5
+      { 'data': 'fav_link' , className: 'text-center'},//6
     ],
     columnDefs: [
       {
@@ -646,7 +648,7 @@ async function bookmarksTable(){
         }
       },
       {
-        'targets': 4,
+        'targets': 5,
         'data': 'download_link',
         'render': function ( data, type, row) {
           const fav_delete = row['fav_delete']
@@ -656,7 +658,7 @@ async function bookmarksTable(){
         }
       },
       {
-        'targets': 5,
+        'targets': 6,
         'data': 'download_link',
         'render': function ( data, type, row) {
           const fav_title = row['fav_title']
