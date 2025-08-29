@@ -683,6 +683,7 @@ async function categoryView(categoryId) {
   const category_name = $('#category_name')
   const category_color = $('#category_color')
   const url = `./api/categoryview-${categoryId}`
+  const abc = ""
   const response = await fetch(url)
   const category = await response.json()
   if(category.length != 0 ){
