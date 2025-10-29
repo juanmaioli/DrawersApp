@@ -39,12 +39,12 @@ if(empty($_GET['id']))
               <h3 class="text-indigo">Drawers</h3>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchTableCard" onchange="changeView()">
-                <label class="form-check-label" id="switchTableCardLabel" for="switchTableCard">Change view to cards</label>
+                <label class="form-check-label" id="switchTableCardLabel" for="switchTableCard" onclick="document.getElementById('switchTableCard').toogle">Change view to cards</label>
               </div>
             </section>
-            <section class="col-md-7 text-end"></section>
-            <section class="col-md-1 text-end"><a href="item_new.php?did=0" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Item</a></section>
-            <section class="col-md-1 text-end"><a href="drawer_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Drawer</a></section>
+            <section class="col-md-5 text-end"></section>
+            <section class="col-md-2 text-end"><a href="item_new.php?did=0" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Item</a></section>
+            <section class="col-md-2 text-end"><a href="drawer_new.php" class="btn btn-indigo"><i class="fa-regular fa-circle-plus"></i>&nbsp;Add Drawer</a></section>
           </article>
         </section>
         <section class="card-body" id="drawersList">
@@ -56,8 +56,8 @@ if(empty($_GET['id']))
 <!-- /Container -->
 <?php include("footer.php"); ?>
 <script>
-  drawersListTable(<?= $usuarioId ?>,<?=$categoryId?>)
-  getStatistics(<?= $usuarioId ?>,5)
+drawersListTable(<?= $usuarioId ?>,<?=$categoryId?>)
+getStatistics(<?= $usuarioId ?>,5)
   async function changeView() {
     const switchTableCard = document.querySelector('#switchTableCard')
     const switchTableCardLabel = document.querySelector('#switchTableCardLabel')

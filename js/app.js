@@ -4,7 +4,7 @@
 async function drawersListCards(usuarioId,categoryId) {
   const $ = selector => document.querySelector(selector)
   const drawersList = $('#drawersList')
-  const url = `./api/list-${usuarioId}-${categoryId}`
+  const url = `./api/api_drawers.php?id=list-${usuarioId}-${categoryId}`
   const response = await fetch(url)
   const drawers = await response.json()
   let drawersListText = `<article class="row">`
@@ -23,7 +23,7 @@ async function drawersListCards(usuarioId,categoryId) {
         <section class="col-3"></section>
         <section class="col-3 d-grid gap-2"><a href="drawer_view.php?id=${drawer.drawer_id}" class="btn btn-outline-success"><i class="fa-regular fa-eye"></i></a></section>
         <section class="col-3 d-grid gap-2"><a href="drawer_del.php?id=${drawer.drawer_id}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a></section>
-        <section class="col-3"></section>
+        <section class="col-3"></section>pi/api_dra
         </article>
         </section>
       </article>
@@ -36,7 +36,7 @@ async function drawersListCards(usuarioId,categoryId) {
   drawersList.innerHTML = drawersListText
 }
 async function drawersListTable(usuarioId,categoryId) {
-  const url = `./api/list-${usuarioId}-${categoryId}`
+  const url = `./api/api_drawers.php?id=list-${usuarioId}-${categoryId}`
   const drawersList = document.querySelector('#drawersList')
   drawersList.innerHTML = `<table id="drawersListTable" class="table table-sm table-hover" style="width:100%">
   <thead class="small">
@@ -162,7 +162,7 @@ async function drawerView(drawerId) {
   const drawer_card = $('#drawer_card')
   const drawer_card_items = $('#drawer_card_items')
   const url = `./api/view-${drawerId}`
-  const url_category = `./api/categorylist-0`
+  const url_category = `./api/api_drawers.php?id=categorylist-0`
   const response = await fetch(url)
   const drawer = await response.json()
   if(drawer.length != 0 ){
@@ -198,7 +198,7 @@ async function categoryList(selecDest) {
   const $ = selector => document.querySelector(selector)
   const selecDestOptions = $('#'+selecDest)
   let options = ``
-  const url = `./api/categorylist-0`
+  const url = `./api/api_drawers.php?id=categorylist-0`
   const response = await fetch(url)
   const categories = await response.json()
   for(const category of categories){
@@ -314,8 +314,8 @@ async function itemView(itemId,usuarioId) {
   const searchImage = $('#searchImage')
   const searchML = $('#searchML')
   const url = `./api/itemview-${itemId}`
-  const url_category = `./api/categorylist-0`
-  const url_drawer = `./api/list-${usuarioId}-0`
+  const url_category = `./api/api_drawers.php?id=categorylist-0`
+  const url_drawer = `./api/api_drawers.php?id=list-${usuarioId}-0`
   // const searchPdf = $('#searchPdf')
   const response = await fetch(url)
   const item = await response.json()
@@ -349,7 +349,7 @@ async function itemView(itemId,usuarioId) {
       item_drawer.innerHTML += `<option class='text-${drawer.category_color}' value="${drawer.drawer_id}" ${selectedTag}>${drawer.drawer_name}</option>`
     }
 
-    const urlBrands = `./api/brandlist-0`
+    const urlBrands = `./api/api_drawers.php?id=brandlist-0`
     const rtaBrands = await fetch(urlBrands)
     const listBrands = await rtaBrands.json()
     for(const brand of listBrands ){
@@ -368,7 +368,7 @@ async function itemView(itemId,usuarioId) {
 async function drawerListSelect(selecDest,usuarioId) {
   const $ = selector => document.querySelector(selector)
   const selecDestOptions = $('#'+selecDest)
-  const url = `./api/list-${usuarioId}-0`
+  const url = `./api/api_drawers.php?id=list-${usuarioId}-0`
   let options = ''
   const response = await fetch(url)
   const drawers = await response.json()
@@ -382,7 +382,7 @@ async function drawerListSelect(selecDest,usuarioId) {
   selecDestOptions.innerHTML = options
 }
 async function itemsAll(usuarioId,categoriaId) {
-  const url = `./api/itemsall-${usuarioId}-${categoriaId}`
+  const url = `./api/api_drawers.php?id=itemsall-${usuarioId}-${categoriaId}`
   console.log('url: ', url)
 
   const table = $('#item_all_table').DataTable( {
@@ -483,7 +483,7 @@ async function itemsAll(usuarioId,categoriaId) {
   })
 }
 async function categoriesTable() {
-  const url = `./api/categorylist-0`
+  const url = `./api/api_drawers.php?id=categorylist-0`
   const table = $('#categoriesListTable').DataTable( {
     destroy: true,
     ajax: {'url': url,'dataSrc': ''},
@@ -566,14 +566,14 @@ async function categoriesTable() {
 }
 async function bookmarksTable(){
   const checkDeleted = document.getElementById('checkDeleted').checked
-  const url = checkDeleted ? `./api/bookmarks-0`: `./api/bookmarksdel-0`
+  const url = checkDeleted ? `./api/api_drawers.php?id=bookmarks-0`: `./api/api_drawers.php?id=bookmarksdel-0`
   const table = $('#bookmarksListTable').DataTable( {
     destroy: true,
     ajax: {'url': url,'dataSrc': ''},
     deferRender: true,
     stateSave: true,
-    stateDuration: 1200,
-    pageLength: 50,
+    stateDuration: 120,
+    pageLength: 30,
     order: [],
     paging: true,
     responsive: true,
@@ -682,8 +682,7 @@ async function categoryView(categoryId) {
   const $ = selector => document.querySelector(selector)
   const category_name = $('#category_name')
   const category_color = $('#category_color')
-  const url = `./api/categoryview-${categoryId}`
-  const abc = ""
+  const url = `./api/api_drawers.php?id=categoryview-${categoryId}`
   const response = await fetch(url)
   const category = await response.json()
   if(category.length != 0 ){
@@ -701,11 +700,11 @@ async function getStatistics(usuarioId,totalRecords) {
   const statisticsCategoryPrice = $('#statisticsCategoryPrice')
   const statisticsPrice = $('#statisticsPrice')
   const statisticsCategoryTotal = $('#statisticsCategoryTotal')
-  const urlPrice = `./api/totalprice-${totalRecords}`
+  const urlPrice = `./api/api_drawers.php?id=totalprice-${totalRecords}`
   const responsePrice = await fetch(urlPrice)
   const priceToJson = await responsePrice.json()
   statisticsPrice.innerHTML = `<h1 class="text-white display-3"><i class="fa-regular fa-sack-dollar"></i>&nbsp;Full Value: <br>$${priceToJson[0].total}</h1>`
-  const urlCategoryPrice  = `./api/categoryprice-${totalRecords}`
+  const urlCategoryPrice  = `./api/api_drawers.php?id=categoryprice-${totalRecords}`
   const responseCategoryPrice = await fetch(urlCategoryPrice)
   const categoryPriceToJson = await responseCategoryPrice.json()
   let bodyTable = ''
@@ -719,7 +718,7 @@ async function getStatistics(usuarioId,totalRecords) {
     </td></tr>`
   }
   statisticsCategoryPrice.innerHTML += `${bodyTable}</tbody></table>`
-  const urlCategoryTotal  = `./api/categorytotal-${totalRecords}`
+  const urlCategoryTotal  = `./api/api_drawers.php?id=categorytotal-${totalRecords}`
   const responseCategoryTotal = await fetch(urlCategoryTotal)
   const categoryTotalToJson = await responseCategoryTotal.json()
   bodyTable = `<h5 class="text-white mb-3">Items By Category</h5>
@@ -832,23 +831,23 @@ function mmToFractionInches(mm) {
   fractionOut.innerHTML = `Inches Fraction: <span class="text-indigo">${mminch(mm).toInch()} "<span class="text-indigo">`
 }
 async function deleteBookmark(article) {
-  const url = `./api/deleteBookmark-${article}`
+  const url = `./api/api_drawers.php?id=deleteBookmark-${article}`
   const response = await fetch(url)
   bookmarksTable()
 }
 async function restoreBookmark(article) {
-  const url = `./api/restoreBookmark-${article}`
+  const url = `./api/rapi_drawers.php?id=estoreBookmark-${article}`
   const response = await fetch(url)
   bookmarksTable()
 }
 async function clearBookmark() {
-  const url = `./api/clearBookmark-0`
+  const url = `./api/api_drawers.php?id=clearBookmark-0`
   const response = await fetch(url)
   bookmarksTable()
 }
 async function priceBookmark() {
   const totalPriceBookmark = document.querySelector('#totalPriceBookmark')
-  const url = `./api/bookmarks-0`
+  const url = `./api/api_drawers.php?id=bookmarks-0`
   const responsePrice = await fetch(url)
   const bookmarks =  await responsePrice.json()
   let totalPrice = 0
@@ -886,7 +885,7 @@ async function addItemAList(){
   const newItemID =  await responseNewItem.json()
   console.log('newItemID: ', newItemID)
   item_brand.innerHTML = ''
-  const urlBrands = `./api/brandlist-0`
+  const urlBrands = `./api/api_drawers.php?id=brandlist-0`
   const rtaBrands = await fetch(urlBrands)
   const listBrands = await rtaBrands.json()
   for(const brand of listBrands ){
