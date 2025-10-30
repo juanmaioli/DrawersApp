@@ -37,7 +37,7 @@ if (empty($_GET['id'])) {
   <link rel="stylesheet" href="css/all.min.css">
   <style>
     body {
-      background-image: url("https://juanmaioli.com.ar/rnd_img/");
+      background-image: url("../rnd_img/index.php?id=petz");
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment: fixed;
