@@ -27,6 +27,9 @@ $drawerId = $_GET['did'];
               <article class="row mb-3">
                 <section class="col">
                 <input id="item_id_status" name="item_id_status" type="hidden" value="0">
+                <input id="item_brand" name="item_brand" type="hidden" value="0">
+                <input id="item_model" name="item_model" type="hidden" value="0">
+
                 <input id="item_owner" name="item_owner" type="hidden" value="<?= $usuarioId ?>">
                   <div class="form-floating">
                     <input type='text' class='form-control' id='item_name' name='item_name' value='' placeholder='item_name' title='item_name'>
